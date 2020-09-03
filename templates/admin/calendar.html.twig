@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/style.css')}}">
+{% endblock %}
+
+{% block body %}
+
+<div>
+{{ test.render }}
+</div>
+
+<div class="messages"></div>
+
+{% endblock %}
+
+ {% block javascripts %}
+ <script type="text/javascript" >
+ let tests = document.querySelectorAll('.free')
+
+for (let test of tests) {
+    test.addEventListener('click',function (e){
+        test.style.backgroundColor = 'blue'
+    })
+
+}
+
+
+getBook = function(){
+    let httpRequest = new XMLHttpRequest()
+    httpRequest.onload = function () {
+        messages = JSON.parse(httpRequest.responseText).reverse()
+        divmessages = document.querySelector('.messages')
+        divmessages.innerHTML= messages
+      
+
+    
+        
+    }
+    //httpRequest.open('GET', {{ path('admin_getbook')}},true)
+    httpRequest.open('GET', 'https://jsonplaceholder.typicode.com/posts',true)
+    
+    httpRequest.send()
+
+}
+getBook()
+ </script>
+ {% endblock %}

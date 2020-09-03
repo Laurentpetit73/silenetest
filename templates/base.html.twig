@@ -6,7 +6,16 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+     <div class="container">
+    <nav>
+    <div class="triangle-left"></div>
+        <div class="year">{{year}}</div>
+        <div class="triangle-right"></div> 
+    </nav>
+        <div class="calendar-container">
         {% block body %}{% endblock %}
+           </div>
+    </div> 
         {% block javascripts %}{% endblock %}
     </body>
 </html>
